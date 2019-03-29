@@ -11,7 +11,7 @@ C:\project> git clone https://github.com/FamingHou/customer-management-frontend.
 C:\project> cd customer-management-frontend
 C:\project\customer-management-frontend> npm install
 ```
-* Start up server
+* Start up
 ```console
 C:\project\customer-management-frontend>ng serve
 ```
