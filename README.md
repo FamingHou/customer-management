@@ -1,19 +1,28 @@
-## Customer Management
+# Customer Management
 
-### Overview
+## Overview
 
-### Installation
+## Installation
 
-#### Frantend
-  
-#### Backend
+### Frontend
+* Download 
+```console
+C:\project> git clone https://github.com/FamingHou/customer-management-frontend.git
+C:\project> cd customer-management-frontend
+C:\project\customer-management-frontend> npm install
+```
+* Start up server
+```console
+C:\project\customer-management-frontend>ng serve
+```
+### Backend
 
-### Frameworks
+## Frameworks
 
-#### Frontend
+### Frontend
 
-#### Backend
+### Backend
 
-### Restful APIs
+## Restful APIs
 
-### Case study
+## Case study
