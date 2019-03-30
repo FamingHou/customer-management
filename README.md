@@ -202,3 +202,9 @@ The customer was created at GMT: Saturday, March 30, 2019 4:15:20 AM, and Auckla
 ```
 It is displayed as *30/Mar/2019 17:15:20* according to locale rules.
 
+## Things to do
+
+1. Add/edit notes
+2. Edit customer details
+3. Foreign key
+4. Swagger
