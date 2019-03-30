@@ -6,10 +6,11 @@
 
 ### Prerequisites
 
-* [Installing npm](https://nodejs.org/en/)
-* [Installing Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-* [Installing Visual Studio Code](https://code.visualstudio.com/download)
-* [Installing Eclipse](https://www.eclipse.org/downloads/)
+* [Install npm](https://nodejs.org/en/)
+* [Install Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Install Visual Studio Code](https://code.visualstudio.com/download)
+* [Install Eclipse](https://www.eclipse.org/downloads/)
+* [Install Angular CLI](https://angular.io/guide/quickstart)
 
 ### Frontend
 
