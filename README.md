@@ -2,6 +2,8 @@
 
 ## Overview
 
+![Tour features](images/tour-features.gif)
+
 ## Installation
 
 ### Prerequisites
