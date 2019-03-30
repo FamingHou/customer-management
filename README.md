@@ -59,4 +59,13 @@ MyBatis | 3.5.1
 
 ## Restful APIs
 
+Feature | Request URL | HTTP Method	 | Request parameter | Request body | Response status
+---|---|---|---|---|---|
+Create a customer | api/v1/customers | POST | | Customer | 201
+Find all customers | api/v1/customers | GET | SortCriteria {sortColumn, sortDirection} | | 200
+Find filtered customers | api/v1/customers/conditions | GET | Customer, SortCriteria || 200
+Update a customer | api/v1/customers | PUT | | Customer | 200
+Updata status of a customer | api/v1/customers/updatestatus | POST | | Customer | 200
+Delete a customer | api/v1/customers/{id} | DELETE | | Id | 200
+
 ## Case study
