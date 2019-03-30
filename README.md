@@ -13,6 +13,8 @@
 
 ### Frontend
 
+* [Repository](https://github.com/FamingHou/customer-management-frontend)
+
 * Download source code
 ```console
 C:\project> git clone https://github.com/FamingHou/customer-management-frontend.git
@@ -24,6 +26,8 @@ C:\project\customer-management-frontend> npm install
 C:\project\customer-management-frontend>ng serve
 ```
 ### Backend
+
+* [Repository](https://github.com/FamingHou/customer-management-springboot)
 
 * Download source code
 
