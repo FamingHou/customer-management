@@ -12,7 +12,7 @@
 * [Install Eclipse](https://www.eclipse.org/downloads/)
 * [Install Angular CLI](https://angular.io/guide/quickstart)
 * [Install MySQL Community Server](https://dev.mysql.com/downloads/mysql/5.5.html)
-* [Execute init.sql](/db/init.sql)
+* [Execute init.sql](mysql/init.sql)
 
 ### Frontend
 
