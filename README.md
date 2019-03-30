@@ -72,10 +72,51 @@ Delete a customer | api/v1/customers/{id} | DELETE | | Id | 200
 
 ### Create a customer
 
-* Do post from client
+1. Do post from client
 
 ![create a customer](images/create-a-customer.png)
 
-* Data received by controller on the server side
+2. Data received by controller on the server side
 
 ![data received](images/request-body-received-by-controller.png)
+
+3. Interface *CustomerService*
+
+```java
+public interface CustomerService {
+  ...
+  void insert(Customer customer) throws ValidationException;
+  ...
+}
+```
+
+4. Class *CustomerServiceImpl*
+
+```java
+@Service
+public class CustomerServiceImpl implements CustomerService {
+  ...
+  @Override
+  public void insert(Customer customer) throws ValidationException {
+    Customer found = customerMapper.findByEmailId(customer);
+    if (found != null) {
+      throw new ValidationException("This email address has already been registered.");
+    }
+    customer.setCreatedTime(System.currentTimeMillis()); // Unix Timestamp in milliseconds
+    customerMapper.insert(customer);
+  }
+  ...
+}   
+```
+
+5. Interface *CustomerMapper*
+
+```java
+@Mapper
+public interface CustomerMapper {
+  ...
+  void insert(Customer customer);
+  ...
+}
+```
+
