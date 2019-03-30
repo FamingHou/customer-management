@@ -41,7 +41,21 @@ C:\project> git clone https://github.com/FamingHou/customer-management-springboo
 
 ### Frontend
 
+Framework | Version
+------------- | -------------
+Node.js | 10.13.0
+Angular | 7.3.6
+Typescript | 3.1.6
+
 ### Backend
+
+Framework | version
+-------------------------- | --------------------------
+Spring boot | 2.1.3
+mybatis-spring-boot-starter | 1.3.0
+spring-boot-starter-web
+spring-boot-devtools
+MyBatis | 3.5.1
 
 ## Restful APIs
 
