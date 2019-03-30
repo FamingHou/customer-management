@@ -76,6 +76,6 @@ Delete a customer | api/v1/customers/{id} | DELETE | | Id | 200
 
 ![create a customer](images/create-a-customer.png)
 
-* Data received by controller
+* Data received by controller on the server side
 
 ![data received](images/request-body-received-by-controller.png)
