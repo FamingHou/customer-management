@@ -49,7 +49,7 @@ Typescript | 3.1.6
 
 ### Backend
 
-Framework | version
+Framework | Version
 -------------------------- | --------------------------
 Spring boot | 2.1.3
 mybatis-spring-boot-starter | 1.3.0
