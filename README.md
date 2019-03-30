@@ -153,7 +153,7 @@ public class Customer implements Serializable{
 ```sql
 CREATE TABLE `customer` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `__first_name__` varchar(45) NOT NULL,
+  `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
   `email_address` varchar(45) NOT NULL,
   `status` varchar(45) DEFAULT NULL,
@@ -176,5 +176,25 @@ In above case, we can only get the value of *id* if we use the default search me
   </resultMap>
 ```
 
+### UNIX Epoch time
 
+The customer was created at GMT: Saturday, March 30, 2019 4:15:20 AM, and Auckland Time: March 30, 2019 5:15:20.653 PM GMT+13:00 DST. The value of created_time on MySQL was saved as UNIX Epoch time by using *System.currentTimeMillis()*.
+
+```json
+  {
+    "id": 1,
+    "first_name": "Frank",
+    "last_name": "Hou",
+    "email_address": "faming.hou@gmail.com",
+    "status": "current",
+    "created_time": 1553919320653
+  }
+```  
+
+[DatePipe](https://angular.io/api/common/DatePipe) is used to format the date value.
+
+```typescript
+  <td>{{customer.createdTime | date : "dd/MMM/yyyy HH:mm:ss"}}</td>
+```
+It is displayed as *30/Mar/2019 17:15:20* according to locale rules.
 
