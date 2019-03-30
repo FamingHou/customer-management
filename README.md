@@ -29,11 +29,12 @@ C:\project\customer-management-frontend>ng serve
 
 * [Repository](https://github.com/FamingHou/customer-management-springboot)
 
-* Download source code
-
+1. Download source code
 ```console
 C:\project> git clone https://github.com/FamingHou/customer-management-springboot
 ```
+2. Import it as a maven existing project in Eclipse
+3. Run the class *CustomerManagementApplication* as a Java application in Eclipse
 
 ## Frameworks
 
