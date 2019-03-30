@@ -132,3 +132,49 @@ public interface CustomerMapper {
   ...
 </mapper>  
 ```
+
+### Column name mismatches 
+
+It is often the case that a property name of a java class is different from the corresponding column name of the table.  
+
+```java
+public class Customer implements Serializable{
+    private static final long serialVersionUID = 1L;
+
+    private long id;
+    private String firstName;
+    private String lastName;
+    private String emailId;
+    private long createdTime;
+    private String status;
+}
+```
+
+```sql
+CREATE TABLE `customer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `__first_name__` varchar(45) NOT NULL,
+  `last_name` varchar(45) NOT NULL,
+  `email_address` varchar(45) NOT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  `created_time` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+```
+
+In above case, we can only get the value of *id* if we use the default search method. MyBatis uses [ResultMap](http://www.mybatis.org/mybatis-3/sqlmap-xml.html) to solve this problem.
+
+```xml
+  <resultMap id="customerResultMap" type="Customer">
+    <id property="id" column="id" />
+    <result property="firstName" column="first_name" />
+    <result property="lastName" column="last_name" />
+    <result property="emailId" column="email_address" />
+    <result property="createdTime" column="created_time" />
+    <result property="status" column="status" />
+  </resultMap>
+```
+
+
+
