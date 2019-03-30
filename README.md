@@ -69,3 +69,8 @@ Updata status of a customer | api/v1/customers/updatestatus | POST | | Customer 
 Delete a customer | api/v1/customers/{id} | DELETE | | Id | 200
 
 ## Case study
+
+### Create a customer
+
+![create a customer](images/create-a-customer.png)
+
