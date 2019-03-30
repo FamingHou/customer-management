@@ -11,6 +11,8 @@
 * [Install Visual Studio Code](https://code.visualstudio.com/download)
 * [Install Eclipse](https://www.eclipse.org/downloads/)
 * [Install Angular CLI](https://angular.io/guide/quickstart)
+* [Install MySQL Community Server](https://dev.mysql.com/downloads/mysql/5.5.html)
+* [Execute init.sql](mysql/init.sql)
 
 ### Frontend
 
