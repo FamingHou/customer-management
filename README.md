@@ -72,10 +72,129 @@ Delete a customer | api/v1/customers/{id} | DELETE | | Id | 200
 
 ### Create a customer
 
-* Do post from client
+1. Do post from client
 
 ![create a customer](images/create-a-customer.png)
 
-* Data received by controller on the server side
+2. Data received by controller on the server side
 
 ![data received](images/request-body-received-by-controller.png)
+
+3. Interface *CustomerService*
+
+```java
+public interface CustomerService {
+  ...
+  void insert(Customer customer) throws ValidationException;
+  ...
+}
+```
+
+4. Class *CustomerServiceImpl*
+
+```java
+@Service
+public class CustomerServiceImpl implements CustomerService {
+  ...
+  @Override
+  public void insert(Customer customer) throws ValidationException {
+    Customer found = customerMapper.findByEmailId(customer);
+    if (found != null) {
+      throw new ValidationException("This email address has already been registered.");
+    }
+    customer.setCreatedTime(System.currentTimeMillis()); // Unix Timestamp in milliseconds
+    customerMapper.insert(customer);
+  }
+  ...
+}   
+```
+
+5. Interface *CustomerMapper*
+
+```java
+@Mapper
+public interface CustomerMapper {
+  ...
+  void insert(Customer customer);
+  ...
+}
+```
+
+6. *CustomerMapper.xml*
+
+```xml
+<mapper namespace="com.example.customermanagement.mapper.CustomerMapper">
+  ...
+  <insert id="insert">
+    insert into customer (first_name, last_name, email_address, status, created_time)
+    values (#{firstName}, #{lastName}, #{emailId}, #{status}, #{createdTime})
+  </insert>
+  ...
+</mapper>  
+```
+
+### Column name mismatches 
+
+It is often the case that a property name of a java class is different from the corresponding column name of the table.  
+
+```java
+public class Customer implements Serializable{
+    private static final long serialVersionUID = 1L;
+
+    private long id;
+    private String firstName;
+    private String lastName;
+    private String emailId;
+    private long createdTime;
+    private String status;
+}
+```
+
+```sql
+CREATE TABLE `customer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(45) NOT NULL,
+  `last_name` varchar(45) NOT NULL,
+  `email_address` varchar(45) NOT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  `created_time` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+```
+
+In above case, we can only get the value of *id* if we use the default search method. MyBatis uses [ResultMap](http://www.mybatis.org/mybatis-3/sqlmap-xml.html) to solve this problem.
+
+```xml
+  <resultMap id="customerResultMap" type="Customer">
+    <id property="id" column="id" />
+    <result property="firstName" column="first_name" />
+    <result property="lastName" column="last_name" />
+    <result property="emailId" column="email_address" />
+    <result property="createdTime" column="created_time" />
+    <result property="status" column="status" />
+  </resultMap>
+```
+
+### UNIX Epoch time
+
+The customer was created at GMT: Saturday, March 30, 2019 4:15:20 AM, and Auckland Time: March 30, 2019 5:15:20.653 PM GMT+13:00 DST. The value of created_time on MySQL was saved as UNIX Epoch time by using *System.currentTimeMillis()*.
+
+```json
+  {
+    "id": 1,
+    "first_name": "Frank",
+    "last_name": "Hou",
+    "email_address": "faming.hou@gmail.com",
+    "status": "current",
+    "created_time": 1553919320653
+  }
+```  
+
+[DatePipe](https://angular.io/api/common/DatePipe) is used to format the date value.
+
+```typescript
+  <td>{{customer.createdTime | date : "dd/MMM/yyyy HH:mm:ss"}}</td>
+```
+It is displayed as *30/Mar/2019 17:15:20* according to locale rules.
+
