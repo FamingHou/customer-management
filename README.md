@@ -72,5 +72,10 @@ Delete a customer | api/v1/customers/{id} | DELETE | | Id | 200
 
 ### Create a customer
 
+* Do post from client
+
 ![create a customer](images/create-a-customer.png)
 
+* Data received by controller
+
+![data received](images/request-body-received-by-controller.png)
