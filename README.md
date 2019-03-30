@@ -120,3 +120,15 @@ public interface CustomerMapper {
 }
 ```
 
+6. *CustomerMapper.xml*
+
+```xml
+<mapper namespace="com.example.customermanagement.mapper.CustomerMapper">
+  ...
+  <insert id="insert">
+    insert into customer (first_name, last_name, email_address, status, created_time)
+    values (#{firstName}, #{lastName}, #{emailId}, #{status}, #{createdTime})
+  </insert>
+  ...
+</mapper>  
+```
